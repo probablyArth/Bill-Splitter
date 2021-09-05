@@ -12,18 +12,18 @@ for i in range(0, num_of_people):
 bill_amount = int(input("Total bill amount: "))
 
 # pick lucky person randomly
-lucky_person = random.randint(0, num_of_people)
+lucky_person = random.randint(0, num_of_people-1)
 
 # split the bill equally
 pay_each = bill_amount/num_of_people
 
-# reduce 50% from lucky one and add equally to others
-lucky_amount = pay_each - ((50*pay_each)/100)
-
-pay_each = pay_each + (((50*pay_each)/100)/(num_of_people-1))
+# reduce 50% from lucky one and add equally to others and round the values to TWO decimal points
+lucky_amount = round(pay_each - ((50*pay_each)/100), 2)
+pay_each = round(pay_each + (((50*pay_each)/100)/(num_of_people-1)), 2)
 
 # Print the bill
 
+print('================BILL================')
 for i in range(0, num_of_people):
     if i != lucky_person:
         print(f"{ppl_dic[i]}: {str(pay_each)}")
